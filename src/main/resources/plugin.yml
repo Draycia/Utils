@@ -1,0 +1,16 @@
+name: MiscUtils
+version: ${project.version}
+main: net.draycia.miscutils.MiscUtils
+api-version: 1.13
+softdepend: [Vault]
+commands:
+  playtime:
+    description: Gets the playtime of the specified player
+    usage: /playtime <Player>
+    permission: miscutils.playtime
+    aliases: [pt]
+  camp:
+    description: Disconnects you from the server
+    usage: /camp
+    permission: miscutils.camp
+    aliases: [leave, quit, logout, logoff]
