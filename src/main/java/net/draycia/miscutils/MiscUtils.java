@@ -6,6 +6,7 @@ import net.draycia.miscutils.listeners.ListenerEntityDamaged;
 import net.draycia.miscutils.listeners.ListenerPlayerDeath;
 import net.draycia.miscutils.listeners.ListenerPlayerInteract;
 import net.milkbowl.vault.permission.Permission;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Chunk;
 import org.bukkit.Material;
@@ -47,6 +48,16 @@ public final class MiscUtils extends JavaPlugin implements Listener {
 
         getCommand("camp").setExecutor(new CommandCamp());
         getCommand("playtime").setExecutor(new CommandPlayTime());
+
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(this, () -> {
+            for (Player player : getServer().getOnlinePlayers()) {
+                if (player.getWorld().getName().equalsIgnoreCase("Spawn")) {
+                    if (player.getLocation().getBlockX() < 50) {
+                        player.teleport(player.getWorld().getSpawnLocation());
+                    }
+                }
+            }
+        }, 0, 10);
     }
 
     public static String color(String message) {
@@ -59,6 +70,6 @@ public final class MiscUtils extends JavaPlugin implements Listener {
         long minutes = TimeUnit.SECONDS.toMinutes(timeInSeconds) - (TimeUnit.SECONDS.toHours(timeInSeconds)* 60);
         long seconds = TimeUnit.SECONDS.toSeconds(timeInSeconds) - (TimeUnit.SECONDS.toMinutes(timeInSeconds) *60);
 
-        return days + "&fD &7" + hours + "&fH &7" + minutes + "&fM &7" + seconds + "&fS";
+        return "&7" + days + "&fD &7" + hours + "&fH &7" + minutes + "&fM &7" + seconds + "&fS";
     }
 }
