@@ -2,6 +2,7 @@ package net.draycia.miscutils;
 
 import net.draycia.miscutils.commands.CommandCamp;
 import net.draycia.miscutils.commands.CommandPlayTime;
+import net.draycia.miscutils.listeners.AnvilListener;
 import net.draycia.miscutils.listeners.ListenerEntityDamaged;
 import net.draycia.miscutils.listeners.ListenerPlayerDeath;
 import net.draycia.miscutils.listeners.ListenerPlayerInteract;
@@ -45,6 +46,7 @@ public final class MiscUtils extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new ListenerPlayerInteract(), this);
         getServer().getPluginManager().registerEvents(new ListenerEntityDamaged(), this);
         getServer().getPluginManager().registerEvents(new ListenerPlayerDeath(), this);
+        getServer().getPluginManager().registerEvents(new AnvilListener(), this);
 
         getCommand("camp").setExecutor(new CommandCamp());
         getCommand("playtime").setExecutor(new CommandPlayTime());
