@@ -11,7 +11,7 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class ListenerPlayerJoin implements Listener {
 
-    private Color navyBlue = Color.fromRGB(0, 55, 96);
+    private final Color navyBlue = Color.fromRGB(0, 55, 96);
     private ItemStack[] leatherSet = new ItemStack[4];
 
     public ListenerPlayerJoin() {
