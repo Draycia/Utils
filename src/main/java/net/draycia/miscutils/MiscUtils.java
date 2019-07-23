@@ -6,6 +6,7 @@ import net.draycia.miscutils.listeners.AnvilListener;
 import net.draycia.miscutils.listeners.ListenerEntityDamaged;
 import net.draycia.miscutils.listeners.ListenerPlayerDeath;
 import net.draycia.miscutils.listeners.ListenerPlayerInteract;
+import net.draycia.miscutils.listeners.ListenerPlayerJoin;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -46,6 +47,7 @@ public final class MiscUtils extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new ListenerPlayerInteract(), this);
         getServer().getPluginManager().registerEvents(new ListenerEntityDamaged(), this);
         getServer().getPluginManager().registerEvents(new ListenerPlayerDeath(), this);
+        getServer().getPluginManager().registerEvents(new ListenerPlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new AnvilListener(), this);
 
         getCommand("camp").setExecutor(new CommandCamp());
@@ -68,7 +70,7 @@ public final class MiscUtils extends JavaPlugin implements Listener {
 
     public static String formatTime(int timeInSeconds) {
         int days = (int) TimeUnit.SECONDS.toDays(timeInSeconds);
-        long hours = TimeUnit.SECONDS.toHours(timeInSeconds) - (days *24);
+        long hours = TimeUnit.SECONDS.toHours(timeInSeconds) - (days * 24);
         long minutes = TimeUnit.SECONDS.toMinutes(timeInSeconds) - (TimeUnit.SECONDS.toHours(timeInSeconds)* 60);
         long seconds = TimeUnit.SECONDS.toSeconds(timeInSeconds) - (TimeUnit.SECONDS.toMinutes(timeInSeconds) *60);
 

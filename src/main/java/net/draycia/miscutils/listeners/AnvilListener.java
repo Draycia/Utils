@@ -16,7 +16,8 @@ public class AnvilListener implements Listener {
             return;
         }
 
-        if (event.getSlotType() == InventoryType.SlotType.RESULT) {
+        // If this doesn't work, look here first
+        if (event.getSlotType() != InventoryType.SlotType.RESULT) {
             return;
         }
 

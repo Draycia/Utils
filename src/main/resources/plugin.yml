@@ -1,4 +1,4 @@
-name: MiscUtils
+name: Noobania-PlayerUtils
 version: ${project.version}
 main: net.draycia.miscutils.MiscUtils
 api-version: 1.13
