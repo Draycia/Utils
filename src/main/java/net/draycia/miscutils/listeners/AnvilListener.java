@@ -39,5 +39,7 @@ public class AnvilListener implements Listener {
         newName = ChatColor.translateAlternateColorCodes('&', newName);
 
         meta.setDisplayName(newName);
+
+        event.getCurrentItem().setItemMeta(meta);
     }
 }
