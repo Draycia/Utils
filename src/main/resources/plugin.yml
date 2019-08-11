@@ -14,3 +14,14 @@ commands:
     usage: /camp
     permission: miscutils.camp
     aliases: [leave, quit, logout, logoff]
+  mureload:
+    description: Reloads the config for the MiscUtils plugin
+    usage: /mureload
+    permission: miscutils.reload
+    aliases: [miscreload, miscutilsreload]
+  createworld:
+    permission: miscutils.createworld
+  worldtrust:
+    permission: miscutils.worldtrust
+  worlduntrust:
+    permission: miscutils.worlduntrust

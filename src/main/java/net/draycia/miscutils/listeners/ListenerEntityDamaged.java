@@ -19,14 +19,24 @@ public class ListenerEntityDamaged implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onEntityDamage(EntityDamageByEntityEvent event) {
-        if (!(event.getDamager() instanceof Player) || !(event.getEntity() instanceof Horse)) return;
+        if (!(event.getDamager() instanceof Player) || !(event.getEntity() instanceof Horse)) {
+            return;
+        }
 
         Player player = (Player)event.getDamager();
         Horse horse = (Horse)event.getEntity();
 
-        if (!player.isSneaking()) return;
-        if (!player.hasPermission("miscutils.debug.horses")) return;
-        if (player.getInventory().getItemInMainHand().getType() != Material.STICK) return;
+        if (!player.isSneaking()) {
+            return;
+        }
+
+        if (!player.hasPermission("miscutils.debug.horses")) {
+            return;
+        }
+
+        if (player.getInventory().getItemInMainHand().getType() != Material.STICK) {
+            return;
+        }
 
         DecimalFormat formatOne = new DecimalFormat("#.#");
         DecimalFormat formatTwo = new DecimalFormat("#%");
@@ -37,7 +47,10 @@ public class ListenerEntityDamaged implements Listener {
 
         AttributeInstance maxHealthAttribute = horse.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         double maxHealth = 30;
-        if (maxHealthAttribute != null) maxHealth = maxHealthAttribute.getValue();
+
+        if (maxHealthAttribute != null) {
+            maxHealth = maxHealthAttribute.getValue();
+        }
 
         String healthPercentage = "&3(&f" + formatTwo.format((horse.getHealth() / maxHealth)) + "&3)";
         player.sendMessage(color("  &b&l- &7Current Health&3: &f" + horse.getHealth() + "&b/&f" + maxHealth + " " + healthPercentage));
@@ -53,14 +66,20 @@ public class ListenerEntityDamaged implements Listener {
 
         AttributeInstance speedAttribute = horse.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED);
         double speed = 0.1125;
-        if (speedAttribute != null) speed = speedAttribute.getValue();
+
+        if (speedAttribute != null) {
+            speed = speedAttribute.getValue();
+        }
 
         String speedPercentage = "&3(&f" + formatTwo.format((speed / 0.3375)) + "&3)";
         player.sendMessage(color("  &b&l- &7Speed&3: &f" + formatFour.format(speed) + "&b/&f0.3375 " + speedPercentage));
 
         AnimalTamer tamer = horse.getOwner();
         String owner = "Not Tamed";
-        if (tamer != null && tamer.getName() != null) owner = tamer.getName();
+
+        if (tamer != null && tamer.getName() != null) {
+            owner = tamer.getName();
+        }
 
         player.sendMessage(color("  &b&l- &7Owner&3: &f" + owner));
 

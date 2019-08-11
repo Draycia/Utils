@@ -1,14 +1,18 @@
 package net.draycia.miscutils.listeners;
 
 import org.bukkit.ChatColor;
+import org.bukkit.entity.HumanEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.event.inventory.PrepareAnvilEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class AnvilListener implements Listener {
+public class ListenerAnvil implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onItemGrab(InventoryClickEvent event) {
@@ -21,7 +25,7 @@ public class AnvilListener implements Listener {
             return;
         }
 
-        if (event.getWhoClicked().hasPermission("miscutils.anvil.color")) {
+        if (!event.getWhoClicked().hasPermission("miscutils.anvil.color")) {
             return;
         }
 
@@ -35,11 +39,37 @@ public class AnvilListener implements Listener {
             return;
         }
 
-        String newName = meta.getDisplayName().replaceAll("&[lmno]", "");
+        String newName = meta.getDisplayName().replaceAll("&[klmno]", "");
         newName = ChatColor.translateAlternateColorCodes('&', newName);
 
         meta.setDisplayName(newName);
 
         event.getCurrentItem().setItemMeta(meta);
+    }
+
+    @EventHandler
+    public void onAnvilPrepare(PrepareAnvilEvent event) {
+
+        for (HumanEntity entity : event.getInventory().getViewers()) {
+            if (entity instanceof Player) {
+                if (!entity.hasPermission("miscutils.anvil.color")) {
+                    return;
+                }
+
+                break;
+            }
+        }
+
+        String newName = event.getInventory().getRenameText();
+
+        if (newName == null || newName.isEmpty()) {
+            return;
+        }
+
+        ItemStack result = event.getResult();
+
+        if (result != null) {
+
+        }
     }
 }
