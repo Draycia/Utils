@@ -78,7 +78,7 @@
         </repository>
         <repository>
             <id>ess-repo</id>
-            <url>http://repo.ess3.net/content/groups/essentials</url>
+            <url>https://ci.ender.zone/plugin/repository/everything/</url>
         </repository>
     </repositories>
 
