@@ -7,9 +7,15 @@ import org.bukkit.event.server.ServerListPingEvent;
 
 public class ListenerServerListPing implements Listener {
 
+    private static String SERVER_MOTD = ChatColor.translateAlternateColorCodes('&', "     &6&l&m--------&8&l&m[&7&l&m--&r  &c&lNoobania&r  &7&l&m--&8&l&m]&6&l&m--------&r\n         &e&l&m---&8&l&m[&7&l&m-&f   &6&lEnjoy Your Stay!&f   &7&l&m-&8&l&m]&e&l&m---");
+
+    public static void setServerMotd(String motd) {
+        SERVER_MOTD = ChatColor.translateAlternateColorCodes('&', motd);
+    }
+
     @EventHandler
     public void onPing(ServerListPingEvent event) {
-        event.setMotd(ChatColor.translateAlternateColorCodes('&', "     &b&l&m--------&8&l&m[&7&l&m--&r  &3&lNoobania&r  &7&l&m--&8&l&m]&b&l&m--------&r\n         &d&l&m---&8&l&m[&7&l&m-&f   &b&lEnjoy Your Stay!&f   &7&l&m-&8&l&m]&d&l&m---"));
+        event.setMotd(SERVER_MOTD);
         event.setMaxPlayers(40);
     }
 }

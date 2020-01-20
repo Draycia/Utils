@@ -19,9 +19,5 @@ commands:
     usage: /mureload
     permission: miscutils.reload
     aliases: [miscreload, miscutilsreload]
-  createworld:
-    permission: miscutils.createworld
-  worldtrust:
-    permission: miscutils.worldtrust
-  worlduntrust:
-    permission: miscutils.worlduntrust
+  setmotd:
+    permission: miscutils.setmotd
