@@ -10,8 +10,10 @@ public class CommandSetMOTD implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        ListenerServerListPing.setServerMotd(String.join(" ", args));
-        sender.sendMessage(ChatColor.GREEN + "Updated server MOTD!");
+        String motd = String.join(" ", args).replace("%", " ").replace("\\n", "\n");
+        ListenerServerListPing.setServerMotd(motd);
+        sender.sendMessage(ChatColor.GREEN + "Updated server MOTD! New MOTD:");
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', motd));
 
         return true;
     }

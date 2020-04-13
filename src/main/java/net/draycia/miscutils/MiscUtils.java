@@ -1,16 +1,14 @@
 package net.draycia.miscutils;
 
 import me.clip.placeholderapi.PlaceholderAPI;
-import net.draycia.miscutils.commands.CommandCamp;
-import net.draycia.miscutils.commands.CommandReload;
-import net.draycia.miscutils.commands.CommandSetMOTD;
-import net.draycia.miscutils.commands.CommandPlayTime;
+import net.draycia.miscutils.commands.*;
 import net.draycia.miscutils.listeners.ListenerAnvil;
-import net.draycia.miscutils.listeners.ListenerEntitySpawn;
 import net.draycia.miscutils.listeners.ListenerPlayerInteract;
 import net.draycia.miscutils.listeners.ListenerPlayerJoin;
 import net.draycia.miscutils.listeners.ListenerPlayerMove;
 import net.draycia.miscutils.listeners.ListenerServerListPing;
+import net.draycia.noobaniautils.NoobaniaUtils;
+import net.draycia.noobaniautils.time.CooldownManager;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
@@ -39,14 +37,19 @@ public final class MiscUtils extends JavaPlugin implements Listener {
         pluginManager.registerEvents(new ListenerPlayerMove(this), this);
         pluginManager.registerEvents(new ListenerServerListPing(), this);
         pluginManager.registerEvents(new ListenerPlayerInteract(), this);
-        pluginManager.registerEvents(new ListenerEntitySpawn(), this);
         pluginManager.registerEvents(new ListenerPlayerJoin(), this);
         pluginManager.registerEvents(new ListenerAnvil(), this);
+
+        NoobaniaUtils noobaniaUtils = (NoobaniaUtils) getServer().getPluginManager().getPlugin("Noobania-Utils");
+        CooldownManager cooldownManager = noobaniaUtils.getCooldownManager();
 
         getCommand("mureload").setExecutor(new CommandReload(this));
         getCommand("camp").setExecutor(new CommandCamp(this));
         getCommand("playtime").setExecutor(new CommandPlayTime());
         getCommand("setmotd").setExecutor(new CommandSetMOTD());
+        getCommand("heal").setExecutor(new CommandHeal(cooldownManager));
+        getCommand("feed").setExecutor(new CommandFeed(cooldownManager));
+        getCommand("resetcooldowns").setExecutor(new CommandResetCooldowns(cooldownManager));
 
         PlaceholderAPI.registerExpansion(new PlaytimeExpansion());
     }

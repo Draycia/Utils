@@ -2,22 +2,32 @@ name: Noobania-PlayerUtils
 version: ${project.version}
 main: net.draycia.miscutils.MiscUtils
 api-version: 1.13
-softdepend: [Vault]
+depend: [Vault, Noobania-Utils]
 commands:
   playtime:
     description: Gets the playtime of the specified player
     usage: /playtime <Player>
-    permission: miscutils.playtime
+    permission: noobania.utils.playtime
     aliases: [pt]
   camp:
     description: Disconnects you from the server
     usage: /camp
-    permission: miscutils.camp
+    permission: noobania.utils.camp
     aliases: [leave, quit, logout, logoff]
   mureload:
     description: Reloads the config for the MiscUtils plugin
     usage: /mureload
-    permission: miscutils.reload
+    permission: noobania.utils.reload
     aliases: [miscreload, miscutilsreload]
   setmotd:
-    permission: miscutils.setmotd
+    permission: noobania.utils.setmotd
+  heal:
+    permission: noobania.utils.heal
+  feed:
+    permission: noobania.utils.feed
+  dailybonus:
+    permission: noobania.utils.dailybonus
+    aliases: [db]
+  resetcooldowns:
+    permission: noobania.utils.resetcooldowns
+    aliases: [rcd]

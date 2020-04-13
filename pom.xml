@@ -13,11 +13,10 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <build.number></build.number>
     </properties>
 
     <build>
-        <finalName>${artifactId}-${version}${build.number}</finalName>
+        <finalName>${artifactId}-${version}</finalName>
 
         <defaultGoal>clean package</defaultGoal>
         <plugins>
@@ -29,22 +28,6 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <minimizeJar>true</minimizeJar>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
         <resources>
@@ -110,6 +93,14 @@
             <groupId>me.clip</groupId>
             <artifactId>placeholderapi</artifactId>
             <version>2.10.3</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Noobania-Utils -->
+        <dependency>
+            <groupId>net.draycia</groupId>
+            <artifactId>Noobania-Utils</artifactId>
+            <version>1.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

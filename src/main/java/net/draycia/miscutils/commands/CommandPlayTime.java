@@ -24,19 +24,21 @@ public class CommandPlayTime implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         Bukkit.getScheduler().scheduleAsyncDelayedTask(MiscUtils.instance, () -> {
-            Player target = (Player)sender;
+            Player target = sender instanceof Player ? (Player)sender : null;
 
             if (args.length >= 1) {
-                target = Bukkit.getPlayer(args[0]);
+                OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(args[0]);
 
-                if (target == null) {
-                    OfflinePlayer offlineTarget = Bukkit.getOfflinePlayer(args[0]);
-                    target = getOfflinePlayer(offlineTarget, ((Player)sender).getLocation());
-                    if (target == null) {
-                        sender.sendMessage(color("&cThat player has never joined the server!"));
-                        return;
-                    }
+                if (offlineTarget.isOnline()) {
+                    target = offlineTarget.getPlayer();
+                } else {
+                    target = getPlayerFromOffline(offlineTarget, ((Player)sender).getLocation());
                 }
+            }
+
+            if (target == null) {
+                sender.sendMessage(color("&3[&bPlayTime&3] &cNo valid player supplied!"));
+                return;
             }
 
             int timeInSeconds = target.getStatistic(Statistic.PLAY_ONE_MINUTE) / 20;
@@ -55,7 +57,11 @@ public class CommandPlayTime implements CommandExecutor {
     }
 
     // Method obtained from https://www.spigotmc.org/threads/clear-inventory-of-offlineplayer.284898/#post-2753902 and slightly modified
-    private Player getOfflinePlayer(OfflinePlayer offlinePlayer, Location location) {
+    static Player getPlayerFromOffline(OfflinePlayer offlinePlayer, Location location) {
+        if (offlinePlayer instanceof Player) {
+            return (Player)offlinePlayer;
+        }
+
         Player target;
         GameProfile profile = new GameProfile(offlinePlayer.getUniqueId(), offlinePlayer.getName());
 

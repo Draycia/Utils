@@ -25,7 +25,7 @@ public class ListenerAnvil implements Listener {
             return;
         }
 
-        if (!event.getWhoClicked().hasPermission("miscutils.anvil.color")) {
+        if (!event.getWhoClicked().hasPermission("noobania.utils.anvil.color")) {
             return;
         }
 
@@ -52,7 +52,7 @@ public class ListenerAnvil implements Listener {
 
         for (HumanEntity entity : event.getInventory().getViewers()) {
             if (entity instanceof Player) {
-                if (!entity.hasPermission("miscutils.anvil.color")) {
+                if (!entity.hasPermission("noobania.utils.anvil.color")) {
                     return;
                 }
 
