@@ -1,9 +1,9 @@
 feed-on-cooldown: '<red>The feed command is on cooldown!'
-feed-remaining-time: '<red>Remaining time: <yellow><gray><days>D <hours>H <minutes>M <seconds>S'
+feed-remaining-time: '<red>Remaining time: <yellow><days>D <hours>H <minutes>M <seconds>S'
 feed-hungry: '<green>You are no longer hungry!'
 
 heal-on-cooldown: '<red>The heal command is on cooldown!'
-heal-remaining-time: '<red>Remaining time: <yellow><gray><days>D <hours>H <minutes>M <seconds>S'
+heal-remaining-time: '<red>Remaining time: <yellow><days>D <hours>H <minutes>M <seconds>S'
 heal-hurt: '<green>You are no longer hurt!'
 
 playtime-stats: '<white><name>''s stats:'
