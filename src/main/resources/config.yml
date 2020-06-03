@@ -1,4 +1,14 @@
 VoidTeleports:
   Islands: 50
 
-CampMessage: You have pitched a tent for the night and have decided to rest...
+MOTD:
+  - "     &6&l&m--------&8&l&m[&7&l&m--&r  &c&lNoobania&r  &7&l&m--&8&l&m]&6&l&m--------&r\n         &e&l&m---&8&l&m[&7&l&m-&f   &6&lEnjoy Your Stay!&f   &7&l&m-&8&l&m]&e&l&m---"
+  - "     &6&l&m--------&8&l&m[&7&l&m--&r  &c&lNoobania&r  &7&l&m--&8&l&m]&6&l&m--------&r\n         &e&l&m---&8&l&m[&7&l&m-&f   &6&l/discord, /rules&f   &7&l&m-&8&l&m]&e&l&m---"
+
+MaxPlayers: 40
+
+Broadcast:
+  - 'One!'
+  - '<green>Two!'
+
+Broadcast-Interval: 12000 # 10 minutes

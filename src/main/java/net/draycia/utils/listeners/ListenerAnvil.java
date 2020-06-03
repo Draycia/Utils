@@ -1,4 +1,4 @@
-package net.draycia.miscutils.listeners;
+package net.draycia.utils.listeners;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.HumanEntity;
@@ -68,8 +68,20 @@ public class ListenerAnvil implements Listener {
 
         ItemStack result = event.getResult();
 
-        if (result != null) {
-
+        if (result == null) {
+            return;
         }
+
+        ItemMeta meta = result.getItemMeta();
+
+        if (meta == null) {
+            return;
+        }
+
+        newName = ChatColor.translateAlternateColorCodes('&', newName);
+
+        meta.setDisplayName(newName);
+
+        result.setItemMeta(meta);
     }
 }

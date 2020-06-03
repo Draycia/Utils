@@ -1,10 +1,22 @@
-package net.draycia.miscutils;
+package net.draycia.utils;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import me.minidigger.minimessage.text.MiniMessageParser;
+import net.kyori.text.Component;
+import net.kyori.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.Statistic;
 import org.bukkit.entity.Player;
 
+import java.util.concurrent.TimeUnit;
+
 public class PlaytimeExpansion extends PlaceholderExpansion {
+
+    private Utils main;
+
+    public PlaytimeExpansion(Utils main) {
+        this.main = main;
+    }
+
     /**
      * This method should always return true unless we
      * have a dependency we need to make sure is on the server
@@ -55,7 +67,18 @@ public class PlaytimeExpansion extends PlaceholderExpansion {
     @Override
     public String onPlaceholderRequest(Player player, String identifier) {
         if (identifier.equalsIgnoreCase("playtime")) {
-            return MiscUtils.formatTime(player.getStatistic(Statistic.PLAY_ONE_MINUTE) / 20);
+            int timeInSeconds = player.getStatistic(Statistic.PLAY_ONE_MINUTE) / 20;
+
+            int days = (int) TimeUnit.SECONDS.toDays(timeInSeconds);
+            long hours = TimeUnit.SECONDS.toHours(timeInSeconds) - (days * 24);
+            long minutes = TimeUnit.SECONDS.toMinutes(timeInSeconds) - (TimeUnit.SECONDS.toHours(timeInSeconds) * 60);
+            long seconds = TimeUnit.SECONDS.toSeconds(timeInSeconds) - (TimeUnit.SECONDS.toMinutes(timeInSeconds) * 60);
+
+            Component component = MiniMessageParser.parseFormat(main.getLanguage().getString("placeholder-pt"),
+                    "days", Integer.toString(days), "hours", Long.toString(hours), "minutes",
+                    Long.toString(minutes), "seconds", Long.toString(seconds));
+
+            return LegacyComponentSerializer.legacy().serialize(component);
         }
 
         return null;

@@ -1,0 +1,19 @@
+feed-on-cooldown: '<red>The feed command is on cooldown!'
+feed-remaining-time: '<red>Remaining time: <yellow><gray><days>D <hours>H <minutes>M <seconds>S'
+feed-hungry: '<green>You are no longer hungry!'
+
+heal-on-cooldown: '<red>The heal command is on cooldown!'
+heal-remaining-time: '<red>Remaining time: <yellow><gray><days>D <hours>H <minutes>M <seconds>S'
+heal-hurt: '<green>You are no longer hurt!'
+
+playtime-stats: '<white><name>''s stats:'
+playtime-pt: '<aqua>Playtime: <gray><days>D <hours>H <minutes>M <seconds>S'
+playtime-joined: '<aqua>Times joined: <gray><joined>'
+
+reset-yourself: '<green>Your cooldowns (heal/feed) have been reset!'
+reset-other: '<green><player>''s cooldowns (heal/feed) have been reset!'
+
+camp: 'You have pitched a tent for the night and have decided to rest...'
+reloaded: '<green>Reloaded config and language file!'
+no-player: '<red>No valid player specified!'
+placeholder-pt: '<gray><days>D <hours>H <minutes>M <seconds>S'
