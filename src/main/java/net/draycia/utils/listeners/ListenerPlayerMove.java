@@ -24,7 +24,7 @@ public class ListenerPlayerMove implements Listener {
         int yLevel = main.getConfig().getInt("VoidTeleports." + worldName);
 
         if (event.getTo().getY() <= yLevel) {
-            event.getPlayer().teleportAsync(event.getTo().getWorld().getSpawnLocation());
+            event.getPlayer().teleport(event.getTo().getWorld().getSpawnLocation());
         }
     }
 }
